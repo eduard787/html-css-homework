@@ -1,0 +1,130 @@
+:root {
+  --main-text-color: #333333;
+  --accent-color: #ff9900;
+  --bg-color: bisque;
+}
+
+body {
+  background-image: url("../images/cat_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: var(--main-text-color);
+  font-size: 20px;
+  line-height: calc(24 / 20);
+}
+
+h1,
+h2 {
+  color: #555;
+  text-align: center;
+}
+
+.page-header {
+  background: linear-gradient(to right, var(--bg-color), var(--accent-color));
+}
+
+.page-footer {
+  background-color: var(--bg-color);
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+}
+
+.page-footer::before {
+  content: "✨ ";
+}
+
+.content-section {
+  background-color: var(--bg-color);
+  border-radius: 10px;
+}
+
+h2::after {
+  content: "";
+  background-color: var(--accent-color);
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-text-color);
+  font-weight: bold;
+}
+
+a:hover {
+  color: white;
+}
+
+ul {
+  list-style: none;
+}
+
+ul > li:first-child {
+  color: var(--accent-color);
+}
+
+img {
+  border: 5px solid brown;
+  border-radius: 8px;
+}
+
+form {
+  background-color: #fff9f0;
+  border: 2px solid var(--accent-color);
+  border-radius: 10px;
+}
+
+label + input {
+  border: 1px solid #ccc;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px solid var(--accent-color);
+  background-color: #fff;
+}
+
+input:required {
+  border-left: 4px solid var(--accent-color);
+}
+
+input[type="radio"]:checked + label,
+input[type="checkbox"]:checked + label {
+  font-weight: bold;
+  color: brown;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="reset"] {
+  background-color: #ccc;
+  color: var(--main-text-color);
+}
+
+/* цей селектор має найбільшу специфічність - (1, 2, 2) */
+#feedback-form form input[type="text"]:focus {
+  background-color: #ffebcd;
+}
