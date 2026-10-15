@@ -128,3 +128,16 @@ button[type="reset"] {
 #feedback-form form input[type="text"]:focus {
   background-color: #ffebcd;
 }
+
+table {
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid var(--main-text-color);
+}
+
+th {
+  text-align: center;
+}
