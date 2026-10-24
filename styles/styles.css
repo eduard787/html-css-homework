@@ -19,7 +19,8 @@ body {
 h1,
 h2,
 p,
-ul {
+ul,
+figure {
   margin: 0;
   padding: 0;
 }
@@ -41,9 +42,17 @@ p {
   margin-bottom: 15px;
 }
 
+p:last-child {
+  margin-bottom: 0;
+}
+
 .page-header {
   background: linear-gradient(to right, var(--bg-color), var(--accent-color));
   padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+main {
   margin-bottom: 30px;
 }
 
@@ -53,10 +62,6 @@ p {
   font-weight: 700;
   text-align: center;
   padding: 20px 0;
-}
-
-.page-footer p {
-  margin-bottom: 0;
 }
 
 .page-footer::before {
@@ -70,6 +75,10 @@ p {
   margin-bottom: 30px;
 }
 
+.content-section:last-child {
+  margin-bottom: 0;
+}
+
 h2::after {
   content: "";
   background-color: var(--accent-color);
@@ -78,7 +87,7 @@ h2::after {
 a {
   text-decoration: none;
   color: var(--main-text-color);
-  font-weight: bold;
+  font-weight: 700;
 }
 
 a:hover {
@@ -91,6 +100,10 @@ ul {
 
 ul > li {
   margin-bottom: 10px;
+}
+
+ul > li:last-child {
+  margin-bottom: 0;
 }
 
 ul > li:first-child {
@@ -143,7 +156,7 @@ input:required {
 
 input[type="radio"]:checked + label,
 input[type="checkbox"]:checked + label {
-  font-weight: bold;
+  font-weight: 700;
   color: brown;
 }
 
