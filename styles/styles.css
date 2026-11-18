@@ -4,6 +4,15 @@
   --bg-color: bisque;
 }
 
+@keyframes pulseTitle {
+  0% {
+    color: #555555;
+  }
+  100% {
+    color: var(--accent-color);
+  }
+}
+
 body {
   font-family: "Roboto", sans-serif;
   background-image: url("../images/cat_1.jpg");
@@ -36,6 +45,10 @@ h2 {
   color: #555;
   text-align: center;
   margin-bottom: 20px;
+}
+
+h1 {
+  animation: pulseTitle 2s ease-in-out infinite alternate;
 }
 
 p {
@@ -129,10 +142,17 @@ a {
   text-decoration: none;
   color: var(--main-text-color);
   font-weight: 700;
+  transition: color 300ms ease, background-color 300ms ease;
 }
 
-a:hover {
+a:hover,
+a:focus {
   color: white;
+}
+
+#contacts address a:hover,
+#contacts address a:focus {
+  color: var(--accent-color);
 }
 
 ul {
@@ -175,6 +195,13 @@ img {
   padding: 12px 20px;
   border: 2px solid brown;
   border-radius: 8px;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.scroll-top:hover,
+.scroll-top:focus {
+  background-color: brown;
+  color: var(--bg-color);
 }
 
 form {
@@ -197,6 +224,7 @@ textarea {
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px;
+  transition: border-color 300ms ease, background-color 300ms ease;
 }
 
 input::placeholder {
@@ -229,11 +257,24 @@ button {
   border-radius: 5px;
   cursor: pointer;
   padding: 10px 20px;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+button:hover,
+button:focus {
+  background-color: brown;
+  color: var(--bg-color);
 }
 
 button[type="reset"] {
   background-color: #ccc;
   color: var(--main-text-color);
+}
+
+button[type="reset"]:hover,
+button[type="reset"]:focus {
+  background-color: var(--main-text-color);
+  color: white;
 }
 
 /* цей селектор має найбільшу специфічність - (1, 2, 2) */
