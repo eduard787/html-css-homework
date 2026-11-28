@@ -1,30 +1,4 @@
-:root {
-  --main-text-color: #333333;
-  --accent-color: #ff9900;
-  --bg-color: bisque;
-}
-
-@keyframes pulseTitle {
-  0% {
-    color: #555555;
-  }
-  100% {
-    color: var(--accent-color);
-  }
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-  background-image: url("../images/cat_1.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  color: var(--main-text-color);
-  font-size: 20px;
-  line-height: calc(24 / 20);
-}
-
+@charset "UTF-8";
 h1,
 h2,
 p,
@@ -32,6 +6,37 @@ ul,
 figure {
   margin: 0;
   padding: 0;
+}
+
+.scroll-top, button {
+  background-color: #ff9900;
+  color: #ffffff;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+
+.scroll-top:hover, .scroll-top:focus, button:hover, button:focus {
+  background-color: brown;
+  color: bisque;
+}
+
+@keyframes pulseTitle {
+  0% {
+    color: #555555;
+  }
+  100% {
+    color: #ff9900;
+  }
+}
+body {
+  font-family: "Roboto", sans-serif;
+  background-image: url("../images/cat_1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: #333333;
+  font-size: 20px;
+  line-height: 1.2;
 }
 
 .container {
@@ -42,7 +47,7 @@ figure {
 
 h1,
 h2 {
-  color: #555;
+  color: #555555;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -51,23 +56,46 @@ h1 {
   animation: pulseTitle 2s ease-in-out infinite alternate;
 }
 
+h2::after {
+  content: "";
+  background-color: #ff9900;
+}
+
 p {
   margin-bottom: 15px;
 }
-
 p:last-child {
   margin-bottom: 0;
 }
 
+ul {
+  list-style: none;
+}
+ul > li:first-child {
+  color: #ff9900;
+  order: 0;
+  align-self: center;
+}
+
+a {
+  text-decoration: none;
+  color: #333333;
+  font-weight: 700;
+  transition: color 300ms ease;
+}
+a:hover, a:focus {
+  color: #ffffff;
+}
+
+/* HEADER */
 .page-header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(to right, var(--bg-color), var(--accent-color));
+  background: linear-gradient(to right, bisque, #ff9900);
   padding: 20px 0;
   margin-bottom: 30px;
 }
-
 .page-header nav ul {
   display: flex;
   flex-direction: row;
@@ -81,25 +109,25 @@ main {
   margin-bottom: 30px;
 }
 
+/* FOOTER */
 .page-footer {
-  background-color: var(--bg-color);
+  background-color: bisque;
   font-style: italic;
   font-weight: 700;
   text-align: center;
   padding: 20px 0;
 }
-
 .page-footer::before {
   content: "✨ ";
 }
 
+/* SECTIONS */
 .content-section {
-  background-color: var(--bg-color);
+  background-color: bisque;
   border-radius: 10px;
   padding: 25px 0;
   margin-bottom: 30px;
 }
-
 .content-section:last-child {
   margin-bottom: 0;
 }
@@ -107,10 +135,11 @@ main {
 #about .container {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
+  flex-wrap: nowrap;
   row-gap: 15px;
 }
-
 #about h1,
 #about p {
   margin-bottom: 0;
@@ -122,47 +151,22 @@ main {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 30px;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
   row-gap: 20px;
 }
 
 #contacts address {
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-wrap: nowrap;
   gap: 10px;
 }
-
-h2::after {
-  content: "";
-  background-color: var(--accent-color);
-}
-
-a {
-  text-decoration: none;
-  color: var(--main-text-color);
-  font-weight: 700;
-  transition: color 300ms ease;
-}
-
-a:hover,
-a:focus {
-  color: white;
-}
-
 #contacts address a:hover,
 #contacts address a:focus {
-  color: var(--accent-color);
-}
-
-ul {
-  list-style: none;
-}
-
-ul > li:first-child {
-  color: var(--accent-color);
-  order: 0;
-  align-self: center;
+  color: #ff9900;
 }
 
 figure {
@@ -173,12 +177,12 @@ figcaption {
   position: absolute;
   top: 20px;
   left: 20px;
-  background-color: var(--bg-color);
-  color: var(--main-text-color);
+  background-color: bisque;
+  color: #333333;
   padding: 8px 15px;
+  font-weight: 700;
   border: 2px solid brown;
   border-radius: 5px;
-  font-weight: 700;
 }
 
 img {
@@ -190,98 +194,82 @@ img {
   position: fixed;
   bottom: 30px;
   right: 30px;
-  background-color: var(--accent-color);
-  color: white;
   padding: 12px 20px;
   border: 2px solid brown;
   border-radius: 8px;
-  transition: background-color 300ms ease, color 300ms ease;
 }
-
-.scroll-top:hover,
-.scroll-top:focus {
-  background-color: brown;
-  color: var(--bg-color);
-}
-
+/* FORM */
 form {
   background-color: #fff9f0;
-  border: 2px solid var(--accent-color);
-  border-radius: 10px;
   padding: 20px;
+  border: 2px solid #ff9900;
+  border-radius: 10px;
 }
 
 label + input {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
+input[type=text],
+input[type=email],
+input[type=number],
 select,
 textarea {
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   padding: 8px;
   margin-bottom: 15px;
   transition: border-color 300ms ease, background-color 300ms ease;
 }
 
-input::placeholder {
-  color: #aaa;
+input::-moz-placeholder {
+  color: #aaaaaa;
   font-style: italic;
+}
+
+input::placeholder {
+  color: #aaaaaa;
+  font-style: italic;
+}
+input:required {
+  border-left: 4px solid #ff9900;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border: 2px solid var(--accent-color);
-  background-color: #fff;
+  border: 2px solid #ff9900;
+  background-color: #ffffff;
 }
 
-input:required {
-  border-left: 4px solid var(--accent-color);
-}
-
-input[type="radio"]:checked + label,
-input[type="checkbox"]:checked + label {
+input[type=radio]:checked + label,
+input[type=checkbox]:checked + label {
   font-weight: 700;
   color: brown;
 }
 
 button {
-  background-color: var(--accent-color);
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   padding: 10px 20px;
-  transition: background-color 300ms ease, color 300ms ease;
 }
-
-button:hover,
-button:focus {
-  background-color: brown;
-  color: var(--bg-color);
+button[type=reset] {
+  background-color: #cccccc;
+  color: #333333;
 }
-
-button[type="reset"] {
-  background-color: #ccc;
-  color: var(--main-text-color);
-}
-
-button[type="reset"]:hover,
-button[type="reset"]:focus {
-  background-color: var(--main-text-color);
-  color: white;
+button[type=reset]:hover, button[type=reset]:focus {
+  background-color: #333333;
+  color: #ffffff;
 }
 
 /* цей селектор має найбільшу специфічність - (1, 2, 2) */
-#feedback-form form input[type="text"]:focus {
+#feedback-form form input[type=text]:focus {
   background-color: #ffebcd;
 }
 
+/* TABLE */
 table {
   border-collapse: collapse;
   margin-bottom: 25px;
@@ -289,10 +277,10 @@ table {
 
 th,
 td {
-  border: 1px solid var(--main-text-color);
+  border: 1px solid #333333;
   padding: 10px;
 }
 
 th {
   text-align: center;
-}
+}/*# sourceMappingURL=styles.css.map */

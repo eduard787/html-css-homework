@@ -1,0 +1,23 @@
+@use './variables' as *;
+
+@mixin flex(
+  $justify: center,
+  $align: center,
+  $direction: row,
+  $wrap: nowrap
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin bordered($width: 2px, $color: $border-brown, $radius: $radius-md) {
+  border: $width solid $color;
+  border-radius: $radius;
+}
+
+@mixin transition($property: color) {
+  transition: $property $transition-duration $transition-timing;
+}

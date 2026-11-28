@@ -1,0 +1,19 @@
+@use './variables' as *;
+
+%reset-spacing {
+  margin: 0;
+  padding: 0;
+}
+
+%accent-interactive {
+  background-color: $accent-color;
+  color: $white-color;
+  transition:
+    background-color $transition-duration $transition-timing,
+    color $transition-duration $transition-timing;
+}
+
+%accent-interactive-hover {
+  background-color: $border-brown;
+  color: $bg-color;
+}

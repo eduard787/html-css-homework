@@ -1,0 +1,283 @@
+@use './variables' as *;
+@use './mixins' as *;
+@use './placeholders' as *;
+
+@keyframes pulseTitle {
+  0% {
+    color: $heading-color;
+  }
+  100% {
+    color: $accent-color;
+  }
+}
+
+body {
+  font-family: $main-font;
+  background-image: url('../images/cat_1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  color: $main-text-color;
+  font-size: $base-font-size;
+  line-height: calc(24 / 20);
+}
+
+h1,
+h2,
+p,
+ul,
+figure {
+  @extend %reset-spacing;
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+h1,
+h2 {
+  color: $heading-color;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h1 {
+  animation: pulseTitle 2s ease-in-out infinite alternate;
+}
+
+h2::after {
+  content: '';
+  background-color: $accent-color;
+}
+
+p {
+  margin-bottom: 15px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul {
+  list-style: none;
+
+  & > li:first-child {
+    color: $accent-color;
+    order: 0;
+    align-self: center;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $main-text-color;
+  font-weight: 700;
+  @include transition(color);
+
+  &:hover,
+  &:focus {
+    color: $white-color;
+  }
+}
+
+/* HEADER */
+.page-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(to right, $bg-color, $accent-color);
+  padding: 20px 0;
+  margin-bottom: 30px;
+
+  nav ul {
+    @include flex(space-between, center, row, wrap);
+    gap: 10px 30px;
+  }
+}
+
+main {
+  margin-bottom: 30px;
+}
+
+/* FOOTER */
+.page-footer {
+  background-color: $bg-color;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  padding: 20px 0;
+
+  &::before {
+    content: '✨ ';
+  }
+}
+
+/* SECTIONS */
+.content-section {
+  background-color: $bg-color;
+  border-radius: $radius-lg;
+  padding: 25px 0;
+  margin-bottom: 30px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+#about {
+  .container {
+    @include flex(flex-start, center, column);
+    row-gap: 15px;
+  }
+
+  h1,
+  p {
+    margin-bottom: 0;
+  }
+}
+
+#gallery ul {
+  @include flex(space-evenly, center, row, wrap);
+  column-gap: 30px;
+  row-gap: 20px;
+}
+
+#contacts address {
+  @include flex(center, center);
+  gap: 10px;
+
+  a:hover,
+  a:focus {
+    color: $accent-color;
+  }
+}
+
+figure {
+  position: relative;
+}
+
+figcaption {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: $bg-color;
+  color: $main-text-color;
+  padding: 8px 15px;
+  font-weight: 700;
+  @include bordered(2px, $border-brown, $radius-sm);
+}
+
+img {
+  @include bordered(5px, $border-brown, $radius-md);
+}
+
+.scroll-top {
+  @extend %accent-interactive;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  padding: 12px 20px;
+  @include bordered(2px, $border-brown, $radius-md);
+
+  &:hover,
+  &:focus {
+    @extend %accent-interactive-hover;
+  }
+}
+
+/* FORM */
+form {
+  background-color: $form-bg-color;
+  padding: 20px;
+  @include bordered(2px, $accent-color, $radius-lg);
+}
+
+label + input {
+  border: 1px solid $input-border-color;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='number'],
+select,
+textarea {
+  @include bordered(1px, $input-border-color, $radius-sm);
+  padding: 8px;
+  margin-bottom: 15px;
+  transition:
+    border-color $transition-duration $transition-timing,
+    background-color $transition-duration $transition-timing;
+}
+
+input {
+  &::placeholder {
+    color: $placeholder-color;
+    font-style: italic;
+  }
+
+  &:required {
+    border-left: 4px solid $accent-color;
+  }
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 2px solid $accent-color;
+  background-color: $white-color;
+}
+
+input[type='radio']:checked + label,
+input[type='checkbox']:checked + label {
+  font-weight: 700;
+  color: $border-brown;
+}
+
+button {
+  @extend %accent-interactive;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  padding: 10px 20px;
+
+  &:hover,
+  &:focus {
+    @extend %accent-interactive-hover;
+  }
+
+  &[type='reset'] {
+    background-color: $input-border-color;
+    color: $main-text-color;
+
+    &:hover,
+    &:focus {
+      background-color: $main-text-color;
+      color: $white-color;
+    }
+  }
+}
+
+/* цей селектор має найбільшу специфічність - (1, 2, 2) */
+#feedback-form form input[type='text']:focus {
+  background-color: $focus-highlight-color;
+}
+
+/* TABLE */
+table {
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+th,
+td {
+  border: 1px solid $main-text-color;
+  padding: 10px;
+}
+
+th {
+  text-align: center;
+}
